@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+    <option name="reLastEntityCreationPackage" value="mtracker-backend/src/main/java/com/akemsandhu/mtrackerbackend" />
+    <option name="reverseEngineeringLastDbConnectionId" value="2b0705b5-3cba-48a6-a05a-9a7a79b0722c" />
+  </component>
+</project>
