@@ -26,7 +26,7 @@ export default function EditBudgetEntry() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:8080/api/budgetentries/balance/${Number(userID)}/${Number(budgetYear)}/${Number(budgetMonth)}/${budgetAccount}/${budgetEntry.budgetAmount}`);
-    navigate("/budget");
+    navigate("/webapp/budget");
   };
 
   const loadBudgetEntry = async () => {
@@ -58,7 +58,7 @@ export default function EditBudgetEntry() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/budget">
+            <Link className="btn btn-outline-danger mx-2" to="/webapp/budget">
               Cancel
             </Link>
           </form>

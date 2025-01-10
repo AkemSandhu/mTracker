@@ -13,7 +13,7 @@ export default function Transactions() {
     if (Cookies.get("auth")) {
       userID = Number(JSON.parse(Cookies.get("auth")).userID)
     } else {
-      navigate("/")
+      navigate("/login")
     }
     loadTransactionsByUser();
   }, []);
@@ -52,7 +52,7 @@ export default function Transactions() {
                   <td>
                     <Link
                         className="btn btn-outline-primary mx-2"
-                        to={`/transactions/edit/${transaction.id}`}
+                        to={`/webapp/transactions/edit/${transaction.id}`}
                     >
                       Edit
                     </Link>
@@ -68,7 +68,7 @@ export default function Transactions() {
           </tbody>
         </table>
       </div>
-      <Link className="btn btn-outline-danger mx-2" to="/transactions/add">
+      <Link className="btn btn-outline-danger mx-2" to="/webapp/transactions/add">
         Add
       </Link>
     </div>

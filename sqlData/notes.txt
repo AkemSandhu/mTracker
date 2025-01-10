@@ -1,1 +1,25 @@
-hello
+todo:
+
+login:
+signup
+
+
+home:
+launch webapp button
+download instead
+
+documentation page
+download page
+
+blog page:
+about the creator page
+
+admin panel:
+
+dashboard:
+make view
+show table
+graphs
+advanced tab
+
+portfolio:

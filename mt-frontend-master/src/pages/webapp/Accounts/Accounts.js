@@ -13,7 +13,7 @@ export default function Accounts() {
     if (Cookies.get("auth")) {
       userID = Number(JSON.parse(Cookies.get("auth")).userID)
     } else {
-      navigate("/")
+      navigate("/login")
     }
     loadAccountsByUser();
   }, []);
@@ -43,7 +43,7 @@ export default function Accounts() {
                 <td>
                   <Link
                     className="btn btn-outline-primary mx-2"
-                    to={`/accounts/edit/${userID}/${account.id.accountType}`}
+                    to={`/webapp/accounts/edit/${userID}/${account.id.accountType}`}
                   >
                     Add/Subtract
                   </Link>
@@ -53,7 +53,7 @@ export default function Accounts() {
           </tbody>
         </table>
       </div>
-      <Link className="btn btn-outline-danger mx-2" to="/accounts/add">
+      <Link className="btn btn-outline-danger mx-2" to="/webapp/accounts/add">
         Add
       </Link>
     </div>

@@ -44,7 +44,7 @@ export default function AddAccount() {
     account1.accountBalance = account.accountBalance
     console.log(account1);
     await axios.post("http://localhost:8080/api/accounts", account1);
-    navigate("/accounts");
+    navigate("/webapp/accounts");
   };
 
   const onOptionChangeHandler = (event) => {
@@ -99,7 +99,7 @@ export default function AddAccount() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/accounts">
+            <Link className="btn btn-outline-danger mx-2" to="/webapp/accounts">
               Cancel
             </Link>
           </form>

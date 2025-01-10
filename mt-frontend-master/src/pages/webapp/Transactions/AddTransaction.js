@@ -1,4 +1,5 @@
 import axios from "axios";
+import Select from 'react-select';
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -36,17 +37,17 @@ export default function AddTransaction() {
     e.preventDefault();
     transaction.userID = userID;
     transaction.categoryID = category
-    console.log(transaction);
     transaction.transactionAmount = Number(transaction.transactionAmount);
+    console.log(transaction);
     await axios.post("http://localhost:8080/api/transactions", transaction);
-    navigate("/transactions");
+    navigate("/webapp/transactions");
   };
 
   const onOptionChangeHandler = (event) => {
-    setCategory(event.target.value);
+    setCategory(event.categoryID);
     console.log(
         "User Selected Value - ",
-        event.target.value
+        event.categoryID
     );
   };
 
@@ -76,21 +77,19 @@ export default function AddTransaction() {
               <label htmlFor="categoryID" className="form-label">
                 Category ID
               </label>
-              <select onChange={onOptionChangeHandler}>
-                {categories.map((categories, index) => (
-                    <option key={index}>
-                      {categories.categoryID}
-                    </option>
-                ))}
-              </select>
-              {/*<input*/}
-              {/*    type={"text"}*/}
-              {/*    className="form-control"*/}
-              {/*    placeholder="w Transaction Account"*/}
-              {/*    name="categoryID"*/}
-              {/*    value={categoryID}*/}
-              {/*    onChange={(e) => onInputChange(e)}*/}
-              {/*/>*/}
+              {/*<select onChange={onOptionChangeHandler}>*/}
+              {/*  {categories.map((categories, index) => (*/}
+              {/*      <option key={index}>*/}
+              {/*        {categories.categoryID}*/}
+              {/*      </option>*/}
+              {/*  ))}*/}
+              {/*</select>*/}
+              <Select
+                  onChange={onOptionChangeHandler}
+                  getOptionValue={option => option.categoryID}
+                  getOptionLabel={option => option.categoryDescription}
+                  options={categories}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="transactionAmount" className="form-label">
@@ -121,7 +120,7 @@ export default function AddTransaction() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/transactions">
+            <Link className="btn btn-outline-danger mx-2" to="/webapp/transactions">
               Cancel
             </Link>
           </form>

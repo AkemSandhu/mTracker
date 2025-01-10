@@ -46,7 +46,7 @@ export default function AddBudgetEntry() {
     budgetEntry1.budgetAmount = Number(budgetEntry.budgetAmount);
     console.log(budgetEntry1);
     await axios.post("http://localhost:8080/api/budgetentries", budgetEntry1);
-    navigate("/budget");
+    navigate("/webapp/budget");
   };
 
   const onOptionChangeHandler = (event) => {
@@ -126,7 +126,7 @@ export default function AddBudgetEntry() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/budget">
+            <Link className="btn btn-outline-danger mx-2" to="/webapp/budget">
               Cancel
             </Link>
           </form>

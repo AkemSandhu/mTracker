@@ -28,7 +28,7 @@ export default function EditAccount() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:8080/api/accounts/balance/${Number(userID)}/${accountType}/${account.accountBalance}`);
-    navigate("/accounts");
+    navigate("/webapp/accounts");
   };
 
   const loadAccount = async () => {
@@ -60,7 +60,7 @@ export default function EditAccount() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/accounts">
+            <Link className="btn btn-outline-danger mx-2" to="/webapp/accounts">
               Cancel
             </Link>
           </form>

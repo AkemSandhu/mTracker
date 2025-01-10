@@ -30,13 +30,13 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <Link className="btn btn-outline-light" to="/accounts">
+          <Link className="btn btn-outline-light" to="/webapp/accounts">
             Accounts
           </Link>
-          <Link className="btn btn-outline-light" to="/budget">
+          <Link className="btn btn-outline-light" to="/webapp/budget">
             Budget
           </Link>
-          <Link className="btn btn-outline-light" to="/transactions">
+          <Link className="btn btn-outline-light" to="/webapp/transactions">
             Transactions
           </Link>
           <button className="btn btn-outline-light" onClick={() => logout()}>

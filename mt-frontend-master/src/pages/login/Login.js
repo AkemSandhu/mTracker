@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from "axios";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -8,14 +9,23 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const testAuthData = {
-        userID: 3,
-        username: 'user',
-        password: 'test',
-    };
+    const findUser=(name, password) => {
+        let result;
+        setTimeout(() => {
+            result =axios.get("http://localhost:8080/api/users/check/testr/frank");
+        }, 3000);
+        console.log(result.data);
+        return result.data;
+    }
+
+    // const testAuthData = {
+    //     userID: 3,
+    //     username: 'user',
+    //     password: 'test',
+    // };
     const authenticateUser = (username, password) => {
-        if (username === testAuthData.username && password === testAuthData.password) {
-            const userID = testAuthData.userID;
+        if (true) {
+            const userID = findUser(username, password);
             const userData = {
                 userID,
                 username,

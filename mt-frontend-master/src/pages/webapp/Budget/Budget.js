@@ -13,7 +13,7 @@ export default function Budget() {
     if (Cookies.get("auth")) {
       userID = Number(JSON.parse(Cookies.get("auth")).userID)
     } else {
-      navigate("/")
+      navigate("/login")
     }
     loadBudgetEntriesByUser();
   }, []);
@@ -52,7 +52,7 @@ export default function Budget() {
                   <td>
                     <Link
                         className="btn btn-outline-primary mx-2"
-                        to={`/budget/editEntry/${userID}/${budgetEntry.id.budgetYear}/${budgetEntry.id.budgetMonth}/${budgetEntry.id.budgetAccount}`}
+                        to={`/webapp/budget/editEntry/${userID}/${budgetEntry.id.budgetYear}/${budgetEntry.id.budgetMonth}/${budgetEntry.id.budgetAccount}`}
                     >
                       Edit
                     </Link>
@@ -68,7 +68,7 @@ export default function Budget() {
           </tbody>
         </table>
       </div>
-      <Link className="btn btn-outline-danger mx-2" to="/budget/addEntry">
+      <Link className="btn btn-outline-danger mx-2" to="/webapp/budget/addEntry">
         Add
       </Link>
     </div>
