@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Portfolios() {
   const [portfolios, setPortfolios] = useState([]);
@@ -11,8 +12,18 @@ export default function Portfolios() {
     loadPortfoliosByUser();
   }, []);
 
+  let userID;
+  useEffect(() => {
+    if (Cookies.get("auth")) {
+      userID = Number(JSON.parse(Cookies.get("auth")).userID)
+    } else {
+      navigate("/login")
+    }
+    loadTransactionsByUser();
+  }, []);
+
   const loadPortfoliosByUser = async () => {
-    const result = await axios.get("http://localhost:8080/api/portfolioentries/user/1");
+    const result = await axios.get(`http://localhost:8080/api/portfolioentries/user/${userID}`);
     setPortfolios(result.data);
     //console.log(result.data);
   };

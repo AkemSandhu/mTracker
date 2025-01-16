@@ -36,34 +36,26 @@ export default function EditBudgetEntry() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Edit BudgetEntry</h2>
+      <div>
+        <div>
+          <h2>Edit BudgetEntry</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="BudgetAmount" className="form-label">
-                Budget Amount
-              </label>
+            <div>
+              <label htmlFor="BudgetAmount">Budget Amount</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="Enter your budget amount"
                   name="budgetAmount"
                   value={budgetAmount}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/budget">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/budget">Cancel</Link>
           </form>
         </div>
       </div>
-    </div>
+
   );
 }

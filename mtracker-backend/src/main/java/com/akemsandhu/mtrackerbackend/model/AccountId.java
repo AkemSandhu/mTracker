@@ -4,11 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import org.hibernate.Hibernate;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class AccountId implements Serializable {
+    @Serial
     private static final long serialVersionUID = 9086268339662114729L;
     @Column(name = "UserID", nullable = false)
     private Integer userID;

@@ -4,12 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import org.hibernate.Hibernate;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Embeddable
 public class BudgetEntryId implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1730956036262777950L;
     @Column(name = "UserID", nullable = false)
     private Integer userID;

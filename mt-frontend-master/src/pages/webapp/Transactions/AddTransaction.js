@@ -52,38 +52,25 @@ export default function AddTransaction() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Register User</h2>
+      <div>
+        <div>
+          <h2>Register User</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="transactionDate" className="form-label">
-                Transaction Date
-              </label>
+            <div>
+              <label htmlFor="transactionDate">Transaction Date</label>
               <input
-                  type={"date"}
+                  type="date"
                   min="2023-01-01"
                   max="2025-12-31"
-                  className="form-control"
                   placeholder="w Transaction Date"
                   name="transactionDate"
                   value={transactionDate}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="categoryID" className="form-label">
-                Category ID
-              </label>
-              {/*<select onChange={onOptionChangeHandler}>*/}
-              {/*  {categories.map((categories, index) => (*/}
-              {/*      <option key={index}>*/}
-              {/*        {categories.categoryID}*/}
-              {/*      </option>*/}
-              {/*  ))}*/}
-              {/*</select>*/}
+            <div>
+              <label htmlFor="categoryID">Category ID</label>
               <Select
                   onChange={onOptionChangeHandler}
                   getOptionValue={option => option.categoryID}
@@ -91,41 +78,30 @@ export default function AddTransaction() {
                   options={categories}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="transactionAmount" className="form-label">
-                Transaction Amount
-              </label>
+            <div>
+              <label htmlFor="transactionAmount">Transaction Amount</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="w Transaction Amount"
                   name="transactionAmount"
                   value={transactionAmount}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="transactionDescription" className="form-label">
-                Transaction Description
-              </label>
+            <div>
+              <label htmlFor="transactionDescription">Transaction Description</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="w Transaction Description"
                   name="transactionDescription"
                   value={transactionDescription}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/transactions">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/transactions">Cancel</Link>
           </form>
         </div>
       </div>
-    </div>
   );
 }

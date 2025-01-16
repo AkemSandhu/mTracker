@@ -59,31 +59,25 @@ export default function EditTransaction() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Edit Transaction</h2>
+      <div>
+        <div>
+          <h2>Edit Transaction</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="TransactionDate" className="form-label">
-                Transaction Date
-              </label>
+            <div>
+              <label htmlFor="TransactionDate">Transaction Date</label>
               <input
-                  type={"date"}
+                  type="date"
                   min="2023-01-01"
                   max="2025-12-31"
-                  className="form-control"
                   placeholder="Enter date"
                   name="transactionDate"
                   value={transactionDate}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="Category ID" className="form-label">
-                Category
-              </label>
+            <div>
+              <label htmlFor="CategoryID">Category</label>
               <Select
                   onChange={onOptionChangeHandler}
                   getOptionValue={option => option.categoryID}
@@ -92,41 +86,30 @@ export default function EditTransaction() {
                   defaultValue={deafultcate}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="TransactionAmount" className="form-label">
-                Transaction Amount
-              </label>
+            <div>
+              <label htmlFor="TransactionAmount">Transaction Amount</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="Enter your budget amount"
                   name="transactionAmount"
                   value={transactionAmount}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="TransactionDescription" className="form-label">
-                Transaction Description
-              </label>
+            <div>
+              <label htmlFor="TransactionDescription">Transaction Description</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="Enter description"
                   name="transactionDescription"
                   value={transactionDescription}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/transactions">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/transactions">Cancel</Link>
           </form>
         </div>
       </div>
-    </div>
   );
 }

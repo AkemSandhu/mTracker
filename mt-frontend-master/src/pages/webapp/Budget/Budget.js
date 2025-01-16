@@ -30,47 +30,43 @@ export default function Budget() {
   };
 
   return (
-    <div className="container">
-      <div className="py-4">
-        <table className="table border shadow">
-          <thead>
-          <tr>
-            <th scope="col">Year</th>
-            <th scope="col">Month</th>
-            <th scope="col">Category</th>
-            <th scope="col">Amount Allocated</th>
-            <th scope="col">Actions</th>
-          </tr>
-          </thead>
-          <tbody>
+      <div>
+        <div>
+          <table>
+            <thead>
+            <tr>
+              <th>Year</th>
+              <th>Month</th>
+              <th>Category</th>
+              <th>Amount Allocated</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
             {budgetEntries.map((budgetEntry, index) => (
-                <tr>
+                <tr key={index}>
                   <th>{budgetEntry.id.budgetYear}</th>
                   <td>{budgetEntry.id.budgetMonth}</td>
                   <td>{budgetEntry.id.budgetAccount}</td>
                   <td>{budgetEntry.budgetAmount}</td>
                   <td>
                     <Link
-                        className="btn btn-outline-primary mx-2"
-                        to={`/webapp/budget/editEntry/${userID}/${budgetEntry.id.budgetYear}/${budgetEntry.id.budgetMonth}/${budgetEntry.id.budgetAccount}`}
-                    >
+                        to={`/webapp/budget/editEntry/${userID}/${budgetEntry.id.budgetYear}/${budgetEntry.id.budgetMonth}/${budgetEntry.id.budgetAccount}`}>
                       Edit
                     </Link>
                     <button
-                        className="btn btn-danger mx-2"
-                        onClick={() => deleteBudgetEntry(budgetEntry.id.budgetYear, budgetEntry.id.budgetMonth, budgetEntry.id.budgetAccount)}
-                    >
+                        onClick={() => deleteBudgetEntry(budgetEntry.id.budgetYear, budgetEntry.id.budgetMonth, budgetEntry.id.budgetAccount)}>
                       Delete
                     </button>
                   </td>
                 </tr>
             ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+        <Link to="/webapp/budget/addEntry">
+          Add
+        </Link>
       </div>
-      <Link className="btn btn-outline-danger mx-2" to="/webapp/budget/addEntry">
-        Add
-      </Link>
-    </div>
   );
 }

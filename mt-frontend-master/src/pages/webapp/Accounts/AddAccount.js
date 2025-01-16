@@ -56,16 +56,13 @@ export default function AddAccount() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Register User</h2>
+      <div>
+        <div>
+          <h2>Register User</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="AccountType" className="form-label">
-                Account Type
-              </label>
+            <div>
+              <label htmlFor="AccountType">Account Type</label>
               <select onChange={onOptionChangeHandler}>
                 {accountTypes.map((accountType, index) => (
                     <option key={index}>
@@ -73,39 +70,21 @@ export default function AddAccount() {
                     </option>
                 ))}
               </select>
-
-              {/*<input*/}
-              {/*  type={"text"}*/}
-              {/*  className="form-control"*/}
-              {/*  placeholder="w Account Type"*/}
-              {/*  name="accountType"*/}
-              {/*  value={accountType}*/}
-              {/*  onChange={(e) => onInputChange(e)}*/}
-              {/*/>*/}
             </div>
-            <div className="mb-3">
-              <label htmlFor="AccountBalance" className="form-label">
-                Account Balance
-              </label>
+            <div>
+              <label htmlFor="AccountBalance">Account Balance</label>
               <input
-                type={"text"}
-                className="form-control"
-                placeholder="w Account Balance"
-                name="accountBalance"
-                value={accountBalance}
-                onChange={(e) => onInputChange(e)}
+                  type="text"
+                  placeholder="w Account Balance"
+                  name="accountBalance"
+                  value={accountBalance}
+                  onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/accounts">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/accounts">Cancel</Link>
           </form>
         </div>
       </div>
-
-    </div>
   );
 }

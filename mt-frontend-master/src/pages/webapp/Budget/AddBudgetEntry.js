@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Select from "react-select";
 
 export default function AddBudgetEntry() {
   let navigate = useNavigate();
@@ -21,6 +22,18 @@ export default function AddBudgetEntry() {
   const { budgetYear, budgetMonth, budgetAmount } = budgetEntry;
 
   const userID = Number(JSON.parse(Cookies.get("auth")).userID);
+  const months_vals = [
+    { Monthvalue: "01", Monthlabel: "JAN" },
+    { Monthvalue: "02", Monthlabel: "FEB" },
+    { Monthvalue: "03", Monthlabel: "MAR" },
+    { Monthvalue: "04", Monthlabel: "APRIL" },
+    { Monthvalue: "05", Monthlabel: "MAY" },
+  ];
+  const year_vals = [
+    { Yearvalue: "2023", Yearlabel: "2023" },
+    { Yearvalue: "2024", Yearlabel: "2024" },
+    { Yearvalue: "2025", Yearlabel: "2025" },
+  ];
 
   useEffect(() => {
     loadAllCategories();
@@ -57,81 +70,72 @@ export default function AddBudgetEntry() {
     );
   };
 
+  const onOptionChangeHandlerMonth = (event) => {
+    setBudgetEntry({...budgetEntry, budgetMonth: event.Monthvalue});
+    console.log(
+        "User Selected Value - ",
+        event.Monthvalue
+    );
+  };
+  const onOptionChangeHandlerYear = (event) => {
+    setBudgetEntry({...budgetEntry, budgetYear: event.Yearvalue});
+    console.log(
+        "User Selected Value - ",
+        event.Yearvalue
+    );
+  };
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Register User</h2>
+      <div>
+        <div>
+          <h2>Register User</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="BudgetEntryYear" className="form-label">
-                Budget Entry Year
-              </label>
-              <input
-                  type={"number"}
-                  className="form-control"
-                  placeholder="w Budget Entry Year"
-                  name="budgetYear"
-                  value={budgetYear}
-                  onChange={(e) => onInputChange(e)}
+            <div>
+              <label htmlFor="BudgetEntryYear">Budget Entry Year</label>
+              <Select
+                  onChange={onOptionChangeHandlerYear}
+                  getOptionValue={option => option.Yearvalue}
+                  getOptionLabel={option => option.Yearlabel}
+                  options={year_vals}
+                  defaultValue={year_vals[1]}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="BudgetEntryMonth" className="form-label">
-                Budget Entry Month
-              </label>
-              <input
-                  type={"number"}
-                  className="form-control"
-                  placeholder="w Budget Entry Month"
-                  name="budgetMonth"
-                  value={budgetMonth}
-                  onChange={(e) => onInputChange(e)}
+            <div>
+              <label htmlFor="BudgetEntryMonth">Budget Entry Month</label>
+              <Select
+                  onChange={onOptionChangeHandlerMonth}
+                  getOptionValue={option => option.Monthvalue}
+                  getOptionLabel={option => option.Monthlabel}
+                  options={months_vals}
+                  defaultValue={months_vals[0]}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="BudgetEntryAccount" className="form-label">
-                Budget Entry Account
-              </label>
+            <div>
+              <label htmlFor="BudgetEntryAccount">Budget Entry Account</label>
               <select onChange={onOptionChangeHandler}>
-                {categories.map((categories, index) => (
+                {categories.map((category, index) => (
                     <option key={index}>
-                      {categories.categoryID}
+                      {category.categoryID}
                     </option>
                 ))}
               </select>
-              {/*<input*/}
-              {/*    type={"text"}*/}
-              {/*    className="form-control"*/}
-              {/*    placeholder="w BudgetEntry Type"*/}
-              {/*    name="budgetAccount"*/}
-              {/*    value={budgetAccount}*/}
-              {/*    onChange={(e) => onInputChange(e)}*/}
-              {/*/>*/}
             </div>
-            <div className="mb-3">
-              <label htmlFor="BudgetEntryAmount" className="form-label">
-                Budget Entry Amount
-              </label>
+            <div>
+              <label htmlFor="BudgetEntryAmount">Budget Entry Amount</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="w BudgetEntry Type"
                   name="budgetAmount"
                   value={budgetAmount}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/budget">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/budget">Cancel</Link>
           </form>
         </div>
       </div>
-    </div>
+
   );
 }

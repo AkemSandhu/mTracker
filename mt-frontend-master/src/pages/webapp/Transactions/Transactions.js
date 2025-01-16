@@ -30,47 +30,40 @@ export default function Transactions() {
   };
 
   return (
-    <div className="container">
-      <div className="py-4">
-        <table className="table border shadow">
-          <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Category</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Description</th>
-            <th scope="col">Actions</th>
-          </tr>
-          </thead>
-          <tbody>
+      <div>
+        <div>
+          <table>
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
             {transactions.map((transaction, index) => (
-                <tr>
+                <tr key={index}>
                   <th>{transaction.transactionDate}</th>
                   <td>{transaction.categoryID}</td>
                   <td>{transaction.transactionAmount}</td>
                   <td>{transaction.transactionDescription}</td>
                   <td>
-                    <Link
-                        className="btn btn-outline-primary mx-2"
-                        to={`/webapp/transactions/edit/${transaction.id}`}
-                    >
+                    <Link to={`/webapp/transactions/edit/${transaction.id}`}>
                       Edit
                     </Link>
-                    <button
-                        className="btn btn-danger mx-2"
-                        onClick={() => deleteTransaction(transaction.id)}
-                    >
+                    <button onClick={() => deleteTransaction(transaction.id)}>
                       Delete
                     </button>
                   </td>
                 </tr>
             ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+        <Link to="/webapp/transactions/add">Add</Link>
       </div>
-      <Link className="btn btn-outline-danger mx-2" to="/webapp/transactions/add">
-        Add
-      </Link>
-    </div>
+
   );
 }

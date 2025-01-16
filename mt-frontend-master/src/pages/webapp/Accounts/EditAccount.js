@@ -38,34 +38,26 @@ export default function EditAccount() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Edit Account</h2>
+      <div>
+        <div>
+          <h2>Edit Account</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor="AccountBalance" className="form-label">
-                Account Balance
-              </label>
+            <div>
+              <label htmlFor="AccountBalance">Account Balance</label>
               <input
-                  type={"text"}
-                  className="form-control"
+                  type="text"
                   placeholder="Enter your budget amount"
                   name="accountBalance"
                   value={accountBalance}
                   onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Submit
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/webapp/accounts">
-              Cancel
-            </Link>
+            <button type="submit">Submit</button>
+            <Link to="/webapp/accounts">Cancel</Link>
           </form>
         </div>
       </div>
-    </div>
+
   );
 }
