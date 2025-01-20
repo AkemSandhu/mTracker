@@ -73,7 +73,7 @@ function Login(props) {
                     )}
                 </form>
                 <div className="text-center">
-                    <p className="text-muted">Don't have an account? <a href="/register" className="text-decoration-none text-primary">Sign up here</a></p>
+                    <p className="text-muted">Don't have an account? <a href="/login/create" className="text-decoration-none text-primary">Sign up here</a></p>
                 </div>
             </div>
         </div>

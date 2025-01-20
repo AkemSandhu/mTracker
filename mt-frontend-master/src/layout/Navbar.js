@@ -99,17 +99,17 @@ export default function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarWebappDropdown">
                                     <li>
-                                        <Link className="dropdown-item" to="/accounts">
+                                        <Link className="dropdown-item" to="webapp/accounts">
                                             Accounts
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/budget">
+                                        <Link className="dropdown-item" to="webapp/budget">
                                             Budget
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/transactions">
+                                        <Link className="dropdown-item" to="webapp/transactions">
                                             Transactions
                                         </Link>
                                     </li>

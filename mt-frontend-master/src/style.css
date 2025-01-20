@@ -85,6 +85,8 @@ body {
 
 .card {
     animation: fadeInUp 1s ease-out;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
 /* Custom button hover effect */
@@ -121,12 +123,6 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Button Hover Effects */
-.btn:hover {
-    opacity: 0.9;
-    transition: all 0.3s ease;
-}
-
 /* Select Dropdown Styling */
 .form-select {
     background-color: #f8f9fa;
@@ -139,3 +135,147 @@ h2.text-primary {
     font-weight: 600;
     color: #007bff;
 }
+
+/* Hover effects for buttons */
+.btn:hover {
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+/* Slight shadow effect on input focus */
+input:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Card layout enhancement */
+.card {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card title styles */
+.card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Hover effect for table rows */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+/* Optional: Custom styling for react-select components */
+.react-select .react-select__control {
+    border-radius: 5px;
+    border-color: #ccc;
+    box-shadow: none;
+}
+
+.react-select .react-select__control:hover {
+    border-color: #007bff;
+}
+
+.btn {
+    width: 48%;
+    min-width: 150px; /* Ensures buttons are of consistent width */
+    padding: 10px;
+
+}
+
+.btn-secondary:hover {
+    background-color: #6c757d;
+    border-color: #545b62;
+}
+
+.table td, .table th {
+    vertical-align: middle; /* Center-align content for a neater look */
+}
+
+/* Optional: Styling for form elements */
+input, select {
+    font-size: 1.1em;
+}
+
+/* Container for the entire blog post */
+.blog-post-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Title of the blog post */
+.post-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Metadata (date and author) */
+.post-meta {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* Styling for the author name */
+.author-name {
+    font-weight: bold;
+    color: #2980b9;
+}
+
+/* Main content of the blog post */
+.post-content p {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.cta-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cta-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #3498db;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 2rem;
+    }
+
+    .post-meta {
+        font-size: 0.9rem;
+    }
+
+    .post-content p {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        font-size: 1rem;
+    }
+}
+

@@ -13,7 +13,7 @@ export default function Features() {
                     <div className="col-md-6 mb-4">
                         <div className="card shadow-sm">
                             <img
-                                src="images/004_transactions.png"
+                                src={require("../images/004_transactions.png")}
                                 alt="Transaction Monitoring"
                                 className="card-img-top"
                                 style={{ maxHeight: "300px", objectFit: "cover" }}
@@ -27,7 +27,7 @@ export default function Features() {
                     <div className="col-md-6 mb-4">
                         <div className="card shadow-sm">
                             <img
-                                src="images/006_tracker.png"
+                                src={require("../images/006_tracker.png")}
                                 alt="Simple Tracking"
                                 className="card-img-top"
                                 style={{ maxHeight: "300px", objectFit: "cover" }}

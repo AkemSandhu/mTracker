@@ -5,11 +5,9 @@ import Accounts from "./pages/webapp/Accounts/Accounts";
 import Signup from "./pages/login/Signup";
 import Budget from "./pages/webapp/Budget/Budget";
 import Transactions from "./pages/webapp/Transactions/Transactions";
-import Portfolio from "./pages/webapp/Portfolio/Portfolio";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddAccount from "./pages/webapp/Accounts/AddAccount";
 import AddBudgetEntry from "./pages/webapp/Budget/AddBudgetEntry";
-import ExchangeStock from "./pages/webapp/Portfolio/ExchangeStock";
 import AddTransaction from "./pages/webapp/Transactions/AddTransaction";
 import EditBudgetEntry from "./pages/webapp/Budget/EditBudgetEntry";
 import EditTransaction from "./pages/webapp/Transactions/EditTransaction";
@@ -53,9 +51,6 @@ function App() {
           <Route exact path="/webapp/transactions" element={<Transactions />} />
           <Route exact path="/webapp/transactions/add" element={<AddTransaction />} />
           <Route exact path="/webapp/transactions/edit/:id" element={<EditTransaction />} />
-          {/*<Route exact path="/webapp/portfolio" element={<Portfolio />} />*/}
-          {/*<Route exact path="/webapp/portfolio/transfer" element={<ExchangeStock />} />*/}
-          {/*<Route exact path="/webapp/portfolio/edit/:id" element={<EditExchange />} />*/}
         </Routes>
 
         <Footer />

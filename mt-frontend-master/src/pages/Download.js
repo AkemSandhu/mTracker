@@ -19,7 +19,7 @@ export default function Download() {
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faDownload} size="2x" className="mb-3" />
                             <h5 className="card-title">Download mTracker (JAR)</h5>
-                            <a href="archive/mTracker.jar" className="btn btn-primary btn-lg">
+                            <a href={require("../archive/mTracker.jar")} className="btn btn-primary btn-lg">
                                 <FontAwesomeIcon icon={faDownload} className="me-2" />
                                 Download Now
                             </a>

@@ -1,8 +1,9 @@
 import axios from "axios";
 import Select from 'react-select';
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importing Bootstrap CSS
 
 export default function AddTransaction() {
   let navigate = useNavigate();
@@ -12,11 +13,9 @@ export default function AddTransaction() {
   });
 
   const [categories, setCategories] = useState([]);
-
   const [category, setCategory] = useState([]);
 
-  const { transactionDate, transactionAmount, transactionDescription } = transaction
-
+  const { transactionDate, transactionAmount, transactionDescription } = transaction;
   const userID = Number(JSON.parse(Cookies.get("auth")).userID);
 
   useEffect(() => {
@@ -30,77 +29,94 @@ export default function AddTransaction() {
   const loadAllCategories = async () => {
     const result = await axios.get("http://localhost:8080/api/transactioncategories/category");
     setCategories(result.data);
-    console.log(result.data);
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     transaction.userID = userID;
-    transaction.categoryID = category
+    transaction.categoryID = category.categoryID;
     transaction.transactionAmount = Number(transaction.transactionAmount);
-    console.log(transaction);
     await axios.post("http://localhost:8080/api/transactions", transaction);
     navigate("/webapp/transactions");
   };
 
   const onOptionChangeHandler = (event) => {
-    setCategory(event.categoryID);
-    console.log(
-        "User Selected Value - ",
-        event.categoryID
-    );
+    setCategory(event);
   };
 
   return (
-      <div>
-        <div>
-          <h2>Register User</h2>
+      <div className="container mt-5">
+        {/* Card to hold form */}
+        <div className="card shadow-lg p-4">
+          <h2 className="text-center text-primary mb-4">Add New Transaction</h2>
 
+          {/* Form to Add Transaction */}
           <form onSubmit={(e) => onSubmit(e)}>
-            <div>
-              <label htmlFor="transactionDate">Transaction Date</label>
+            {/* Transaction Date */}
+            <div className="mb-3">
+              <label htmlFor="transactionDate" className="form-label">Transaction Date</label>
               <input
                   type="date"
                   min="2023-01-01"
                   max="2025-12-31"
-                  placeholder="w Transaction Date"
+                  placeholder="Enter Transaction Date"
                   name="transactionDate"
                   value={transactionDate}
                   onChange={(e) => onInputChange(e)}
+                  className="form-control"
               />
             </div>
-            <div>
-              <label htmlFor="categoryID">Category ID</label>
+
+            {/* Category Selector */}
+            <div className="mb-3">
+              <label htmlFor="categoryID" className="form-label">Category</label>
               <Select
                   onChange={onOptionChangeHandler}
                   getOptionValue={option => option.categoryID}
                   getOptionLabel={option => option.categoryDescription}
                   options={categories}
+                  className="form-control"
               />
             </div>
-            <div>
-              <label htmlFor="transactionAmount">Transaction Amount</label>
+
+            {/* Transaction Amount */}
+            <div className="mb-3">
+              <label htmlFor="transactionAmount" className="form-label">Transaction Amount</label>
               <input
-                  type="text"
-                  placeholder="w Transaction Amount"
+                  type="number"
+                  placeholder="Enter Transaction Amount"
                   name="transactionAmount"
                   value={transactionAmount}
                   onChange={(e) => onInputChange(e)}
+                  className="form-control"
               />
             </div>
-            <div>
-              <label htmlFor="transactionDescription">Transaction Description</label>
+
+            {/* Transaction Description */}
+            <div className="mb-3">
+              <label htmlFor="transactionDescription" className="form-label">Description</label>
               <input
                   type="text"
-                  placeholder="w Transaction Description"
+                  placeholder="Enter Transaction Description"
                   name="transactionDescription"
                   value={transactionDescription}
                   onChange={(e) => onInputChange(e)}
+                  className="form-control"
               />
             </div>
-            <button type="submit">Submit</button>
-            <Link to="/webapp/transactions">Cancel</Link>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <button type="submit" className="btn btn-success btn-lg">Submit</button>
+            </div>
           </form>
+
+          {/* Cancel Button */}
+          <div className="text-center mt-3">
+            <Link to="/webapp/transactions" className="btn btn-danger btn-lg">
+              Cancel
+            </Link>
+          </div>
         </div>
       </div>
   );

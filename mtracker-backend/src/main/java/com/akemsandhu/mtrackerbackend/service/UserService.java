@@ -15,9 +15,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-//
     private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -38,20 +35,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-//    public Optional<User> getUserByEmail(String email) {
-//        return userRepository.findByUserEmail(email);
-//    }
-
     public int checkUserExists(String userName, String password) {
         String hashedPassword = hashPassword(password);
         return userRepository.checkUser(userName, hashedPassword);
     }
-
-//    public boolean authenticateUser(String email, String password) {
-//        Optional<User> user = userRepository.findByUserEmail(email);
-//        if (user.isPresent()) {
-//            return passwordEncoder.matches(password, user.get().getUserHashedPassword());
-//        }
-//        return false;
-//    }
 }
